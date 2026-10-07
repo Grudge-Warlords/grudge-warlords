@@ -1,0 +1,101 @@
+{
+  "id": "grudgegit/grudge-warlords",
+  "repository": "Grudge-Warlords/grudge-warlords",
+  "group": "grudgegit",
+  "name": "grudge-warlords",
+  "source": "C:\\grudgegit\\grudge-warlords",
+  "buildRoot": "D:\\grudgegit\\grudge-warlords",
+  "outputRoot": "E:\\grudgegit\\grudge-warlords",
+  "components": [
+    {
+      "id": "client",
+      "label": "client",
+      "relative": "client",
+      "output": "client",
+      "kind": "web",
+      "buildScript": "build",
+      "launchScript": null,
+      "installer": false,
+      "requires": [
+        "Node.js and project package manager"
+      ],
+      "notes": [],
+      "launchOptionOnBuildCompletion": true
+    },
+    {
+      "id": "server",
+      "label": "server",
+      "relative": "server",
+      "output": "server",
+      "kind": "node",
+      "buildScript": "build",
+      "launchScript": "start",
+      "installer": false,
+      "requires": [
+        "Node.js and project package manager"
+      ],
+      "notes": [],
+      "launchOptionOnBuildCompletion": true
+    },
+    {
+      "id": "shared",
+      "label": "shared",
+      "relative": "shared",
+      "output": "shared",
+      "kind": "library",
+      "buildScript": "build",
+      "launchScript": null,
+      "installer": false,
+      "requires": [
+        "Node.js and project package manager"
+      ],
+      "notes": [
+        "No production start script is defined; opens completed package."
+      ],
+      "launchOptionOnBuildCompletion": true
+    }
+  ],
+  "packages": {
+    ".": {
+      "scripts": {
+        "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+        "dev:client": "npm run dev --prefix client",
+        "dev:server": "npm run dev --prefix server",
+        "build": "npm run build --prefix shared && npm run build --prefix server && npm run build --prefix client"
+      },
+      "packageManager": null,
+      "name": "grudge-voxel"
+    },
+    "client": {
+      "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+      },
+      "packageManager": null,
+      "name": "@grudge/client"
+    },
+    "server": {
+      "scripts": {
+        "dev": "tsx watch src/GameServer.ts",
+        "build": "tsc",
+        "start": "node dist/GameServer.js"
+      },
+      "packageManager": null,
+      "name": "@grudge/server"
+    },
+    "shared": {
+      "scripts": {
+        "build": "tsc",
+        "typecheck": "tsc --noEmit"
+      },
+      "packageManager": null,
+      "name": "@grudge/shared"
+    }
+  },
+  "nativeEntries": [],
+  "preexistingTrackedChanges": [],
+  "releaseOnly": false,
+  "storageProfile": ".storage/profile.json",
+  "storageDevice": ".storage/device.json"
+}

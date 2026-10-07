@@ -6,8 +6,10 @@
   "main": "./src/GameServer.ts",
   "scripts": {
     "dev": "tsx watch src/GameServer.ts",
-    "build": "tsc",
-    "start": "node dist/GameServer.js"
+    "build": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"C:\\grudgegit\\grudge-warlords/Build-Workspace.ps1\" -PackageRelative \"server\" -Script \"build\" -NoLaunchPrompt",
+    "start": "node dist/GameServer.js",
+    "workspace:build": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"C:\\grudgegit\\grudge-warlords/Build-Workspace.ps1\"",
+    "workspace:menu": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"C:\\grudgegit\\grudge-warlords/Project-Console.ps1\""
   },
   "dependencies": {
     "ws": "^8.18.0"

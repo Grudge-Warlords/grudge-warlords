@@ -31,3 +31,6 @@ client/public/models/
 .env.local
 .env.production
 .vercel
+
+# This device only; public installers collect their own drive choices.
+.storage/device.json
